@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SITCON Camp 3-7</title>
+	<meta name="description" content="SITCON Summer Camp 2015。" />
+	<meta http-enquiv="Content-Type" content="text/html" charset="utf-8" />
+	<script type="text/javascript">
+	function click1(){
+		// 取得時間
+		var date = new Date();
+
+		// FullYear-Month-Date
+		document.getElementById("data").innerHTML = date.getFullYear() +'-'+ (date.getMonth()+1) +'-'+ date.getDate();
+	}
+
+	function click2(){
+		// 產生陣列
+		var arr = ['Apple', 'Banana', 'Cat', 'Dog'];
+
+		document.getElementById("data").innerHTML = '';
+
+		// 迴圈
+		for(var i in arr){
+			document.getElementById("data").innerHTML += arr[i]+"<br />";
+		}
+
+		// 迴圈2
+		arr.forEach(function(val){
+			document.getElementById("data").innerHTML += val+"<br />";
+		});
+	}
+	</script>
+</head>
+<body>
+	<input type="button" onClick="click1()" value="Click 1" /> <br />
+	<button type="button" onClick="click2()">Click 2</button>
+
+	<div id="data"></div>
+</body>
+</html>

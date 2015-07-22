@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SITCON Camp 4-5</title>
+	<meta name="description" content="SITCON Summer Camp 2015。" />
+	<meta http-enquiv="Content-Type" content="text/html" charset="utf-8" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+
+		// 利用 Ajax 傳輸資料
+		$.ajax({
+			url: 'http://maps.googleapis.com/maps/api/geocode/json',
+			type: 'GET',
+			dataType: 'json',
+			data: {
+				address: "聖約翰科技大學"
+			},
+			success: function(data, textStatus, jqXHR){
+				console.log( data );
+				
+				$("body").append("名稱: "+ data.results[0].address_components[0].long_name);
+				$("body").append("<br />");
+				$("body").append("地址: "+ data.results[0].formatted_address);
+				$("body").append("<br />");
+				$("body").append("經度: "+ data.results[0].geometry.location.lng);
+				$("body").append("<br />");
+				$("body").append("緯度: "+ data.results[0].geometry.location.lat);
+			}
+		});
+
+		/*
+			拯救眾生免於 Google Maps API 的摧殘，輕鬆建立 Google 地圖的 jQuery Plugin
+			http://app.essoduke.org/tinyMap/
+		//*/
+	});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

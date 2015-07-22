@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SITCON Camp 4-6</title>
+	<meta name="description" content="SITCON Summer Camp 2015。" />
+	<meta http-enquiv="Content-Type" content="text/html" charset="utf-8" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+	<script type="text/javascript" src="http://sdk.sitcon.camp/facebook-sdk.js"></script>
+	<script type="text/javascript" src="http://sdk.sitcon.camp/openweathermap-sdk.js"></script>
+	<style type="text/css">
+	img:hover {
+		opacity: 0.8;
+	}
+	</style>
+	<script type="text/javascript">
+	// SITCON Camp SDK API https://github.com/sitcon-tw/summercamp-api-sdk
+	// SITCON Camp SDK Demo http://sdk.sitcon.camp/
+	$(document).ready(function(){
+		// Facebook API
+		FB.getSitconInfo(function (res){
+			console.log(res);
+
+			$('body').append('<h1>'+ res.name +'</h1>');
+			$('body').append("<br />");
+			$('body').append('<div>'+ res.about +'</div>');
+			$('body').append("<br />");
+			$('body').append('<a target="_blank" href="'+ res.website +'"><img src="'+ FB.getImgUrlById(res.cover.cover_id) +'" /></a>');
+			$('body').append("<hr />");
+		});
+
+		// Weather API
+		var weather = new OpenWeatherMap();
+		weather.getCityWeather(function (res){
+			console.log( res );
+
+			$('body').append('<h1>'+ res.name +'</h1>');
+			$('body').append("<br />");
+			$('body').append("所在位置："+res.sys.country + ", " + res.name);
+			$('body').append("<br />");
+			$('body').append("天氣狀況："+res.weather[0].description);
+			$('body').append("<br />");
+			$('body').append("目前氣溫："+res.main.temp + " &#08451;");
+			$('body').append("<br />");
+			$('body').append("目前風速："+res.wind.speed);
+			$('body').append("<hr />");
+		}, 'Taichung');
+	});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

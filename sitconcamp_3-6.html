@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SITCON Camp 3-6</title>
+	<meta name="description" content="SITCON Summer Camp 2015。" />
+	<meta http-enquiv="Content-Type" content="text/html" charset="utf-8" />
+	<script type="text/javascript">
+	function load(){
+		// 輸出數字2
+		console.log( document.getElementsByName("sex").length );
+
+		// HTMLDivElement
+		var box = document.getElementById("box");
+
+		// HTMLInputElement
+		var sex1 = document.getElementsByName("sex")[0];
+
+		// HTMLCollection
+		var items = document.getElementsByClassName("item"); // IE 9+
+		var divs = document.getElementsByTagName("div");
+
+		// 輸出數字1
+		console.log( sex1.value );
+
+		// 創造HTML元素
+		box.innerHTML = '<a href="http://sitcon.camp/">SITCON Camp</a>';
+
+		// 於body下增加元素
+		document.body.innerHTML += '<div id="appenddiv"></div>';
+
+		// 產生新的標籤元素
+		var elementDiv = document.createElement("div");
+		elementDiv.id = "appenditem";
+		elementDiv.innerHTML = "Hello SITCON!!";
+		// elementDiv.appendChild( document.createTextNode("Hello SITCON!!") );
+
+		// 於 #appenddiv 加入元素
+		document.getElementById("appenddiv").appendChild(elementDiv);
+	}
+	</script>
+</head>
+<body onload="load()">
+	<input type="radio" name="sex" value="1" />
+	<input type="radio" name="sex" value="2" />
+
+	<div id="box"></div>
+
+	<div class="item">First</div>
+	<div class="item">Last</div>
+</body>
+</html>
